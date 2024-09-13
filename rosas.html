@@ -6,7 +6,60 @@
   <link rel="stylesheet" href="./style.css">
 
 </head>
+
+<style>
+  #content-fotos-1 {
+    top: 0px;
+    left: 0px;
+  }
+  #content-fotos-2 {
+    top: 0px;
+    right: 0px;
+  }
+  #content-fotos-3 {
+    bottom: 0px;
+    left: 0px;
+  }
+  #content-fotos-4 {
+    bottom: 0px;
+    right: 0px;
+  }
+  #content-fotos-1 img {
+    border-radius: 0px 0px 20px 0px;
+  }
+  #content-fotos-2 img {
+    border-radius: 0px 0px 0px 20px;
+  }
+  #content-fotos-3 img {
+    border-radius: 0px 20px 0px 0px;
+  }
+  #content-fotos-4 img {
+    border-radius: 20px 0px 0px 0px;
+  }
+
+  .content-fotos {
+    width: 20%;
+    position:  absolute;
+    z-index: 1;
+  }
+
+  .content-fotos img {
+    width: 100%;
+  }
+</style>
 <body>
+  <div id="content-fotos-1" class="content-fotos">
+    <img src="/img/foto pg1.jpeg" alt="">
+  </div>
+  <div id="content-fotos-2" class="content-fotos">
+    <img src="/img/foto pg2.jpg" alt="">
+  </div>
+  <div id="content-fotos-3" class="content-fotos">
+    <img src="/img/foto pg1.jpeg" alt="">
+  </div>
+  <div id="content-fotos-4" class="content-fotos">
+    <img src="/img/foto pg2.jpg" alt="">
+  </div>
 <!-- partial:index.partial.html -->
 <body class="container">
   <div class="night"></div>

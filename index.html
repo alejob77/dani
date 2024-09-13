@@ -15,48 +15,87 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('img/foto pg1.jpeg') no-repeat center center/cover;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
         }
 
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/foto pg1.jpeg') no-repeat center center/cover;
+            filter: brightness(0.9);
+            z-index: -1;
+        }
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); 
+            z-index: -1;
+        }
         h1,
-        h2 {
-            color: rgb(235, 132, 226);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        h2 {            
+            color: #fff;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
             text-align: center;
+            margin: 0;
         }
 
         h1 {
-            font-size: 8vw;
-            animation: fadeInOut 3s infinite;
-            /* Animación suave */
+            font-size: 6vw;
+            color: #e885e1;
+            letter-spacing: 3px;
+            animation: fadeInOut 4s infinite ease-in-out;
         }
 
         h2 {
-            font-size: 4vw;
+            font-size: 3vw;
             margin-top: 20px;
-            animation: pulse 2s infinite;
-            /* Pequeño efecto de pulsación */
+            max-width: 90%;
+            line-height: 1.5;
+            animation: slideIn 1.5s ease-out forwards;
         }
 
         button {
-            font-size: 3vw;
-            padding: 15px 30px;
+            font-size: 20px;
+            padding: 5px 40px;
             margin-top: 30px;
+            background-color: #ff4b72;
+            color: #fff;
             border: none;
-            margin-left: 200px;
-            background-color: #ff3366;
-            color: white;
             cursor: pointer;
             border-radius: 50px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            font-weight: bold;
+        }
+
+        button svg {
+            width: 40px;
+            fill: #fff;
+        }
+        button:hover {
+            background-color: #ff2b58;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
+            transform: scale(1.05);
         }
 
         @keyframes fadeInOut {
-
             0%,
             100% {
-                opacity: 0.8;
+                opacity: 0.7;
             }
 
             50% {
@@ -64,29 +103,85 @@
             }
         }
 
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
             }
 
-            50% {
-                transform: scale(1.05);
+            to {
+                transform: translateY(0);
+                opacity: 1;
             }
+        }
+
+             /* Estilo para dispositivos en modo landscape */
+             .content {
+            display: block;
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        /* Estilo para dispositivos en modo portrait */
+        @media only screen and (orientation: portrait) {
+            .content {
+                display: none;
+            }
+
+            .rotate-message {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-size: 2rem;
+                color: #fff;
+                background-color: #333;
+                height: 100vh;
+                width: 100vw;
+            }
+        }
+
+        /* Estilo para dispositivos en modo landscape */
+        @media only screen and (orientation: landscape) {
+            .rotate-message {
+                display: none;
+            }
+
+            .content {
+                display: block;
+            }
+        }
+
+        .content > div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <h1>MI AMOR</h1>
-        <h2>Nuestro amor tiene mucho que contar, en un principio por asares del destino una separación luego de dos años
-            el destino nos unió de nuevo y nos demostró que la historia aun no terminaba, dos hermosas hijas nos
-            demuestran cada día, la fuerza y el significado del verdadero amor, el progreso y las metas logradas nos
-            demuestran el gran equipo que somos </h2>
-        <button onclick="window.location.href='pag2.html'">y por eso pasen a la siguiente pagina</button>
+    <!-- Contenido principal de tu página -->
+    <div class="content">
+        <div>
+            <h1>MI AMOR</h1>
+            
+            <h2>Nuestro amor tiene mucho que contar, en un principio por asares del destino una separación, luego de dos años el destino nos unió de nuevo y nos demostró que la historia aun no terminaba, dos hermosas hijas nos lo demuestran cada día, la fuerza y el significado del verdadero amor, el progreso y las metas logradas nos demuestran el gran equipo que somos.</h2>
+            <button onclick="window.location.href='pag2.html'">
+                <span>Pasen a la siguiente página</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-right-thick</title><path d="M4,10V14H13L9.5,17.5L11.92,19.92L19.84,12L11.92,4.08L9.5,6.5L13,10H4Z" /></svg>
+            </button>
+        </div>
     </div>
+
+    <!-- Mensaje que se muestra en modo portrait -->
+    <div class="rotate-message">
+        <p>Por favor, gira tu dispositivo para continuar.</p>
+    </div>
+    
 </body>
 
 </html>

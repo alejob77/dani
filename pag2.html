@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi amor</title>
     <style>
-        body, html {
+        body,
+        html {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -13,64 +14,260 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('img/foto pg2.jpg') no-repeat center center/cover;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
         }
 
-        h1, h2 {
-            color: rgb(235, 132, 226);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/foto pg2.jpg') no-repeat center center/cover;
+            filter: brightness(0.9);
+            z-index: -1;
+        }
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); 
+            z-index: -1;
+        }
+        h1,
+        h2 {            
+            color: #fff;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
             text-align: center;
+            margin: 0;
         }
 
         h1 {
-            font-size: 8vw;
-            animation: fadeInOut 3s infinite; /* Animación suave */
+            font-size: 6vw;
+            color: #e885e1;
+            letter-spacing: 3px;
+            animation: fadeInOut 4s infinite ease-in-out;
         }
 
         h2 {
-            font-size: 4vw;
+            font-size: 3vw;
             margin-top: 20px;
-            animation: pulse 2s infinite; /* Pequeño efecto de pulsación */
+            max-width: 90%;
+            line-height: 1.5;
+            animation: slideIn 1.5s ease-out forwards;
         }
 
         button {
-            font-size: 3vw;
-            padding: 15px 30px;
+            font-size: 20px;
+            padding: 5px 40px;
             margin-top: 30px;
+            background-color: #ff4b72;
+            color: #fff;
             border: none;
-            margin-left: 200px;
-            background-color: #ff3366;
-            color: white;
             cursor: pointer;
             border-radius: 50px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            font-weight: bold;
+        }
+
+        button svg {
+            width: 40px;
+            fill: #fff;
+        }
+        button:hover {
+            background-color: #ff2b58;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
+            transform: scale(1.05);
         }
 
         @keyframes fadeInOut {
-            0%, 100% {
-                opacity: 0.8;
+            0%,
+            100% {
+                opacity: 0.7;
             }
+
             50% {
                 opacity: 1;
             }
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+             /* Estilo para dispositivos en modo landscape */
+             .content {
+            display: block;
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        /* Estilo para dispositivos en modo portrait */
+        @media only screen and (orientation: portrait) {
+            .content {
+                display: none;
+            }
+
+            .rotate-message {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-size: 2rem;
+                color: #fff;
+                background-color: #333;
+                height: 100vh;
+                width: 100vw;
+            }
+        }
+
+        /* Estilo para dispositivos en modo landscape */
+        @media only screen and (orientation: landscape) {
+            .rotate-message {
+                display: none;
+            }
+
+            .content {
+                display: block;
+            }
+        }
+
+        .content > div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .proposal-button {
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #ff4500, #ff6347);
+            background-size: 300%;
+            color: white;
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: all 0.4s ease;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        .proposal-button::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            transition: all 0.4s ease;
+            filter: blur(5px);
+        }
+
+        .proposal-button:hover {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .proposal-button:hover::before {
+            filter: blur(8px);
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
             }
             50% {
-                transform: scale(1.05);
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Agregamos corazones flotantes */
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #ff69b4;
+            clip-path: path("M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .heart:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        .heart:nth-child(3) {
+            animation-delay: 4s;
+            width: 30px;
+            height: 30px;
+            background-color: #ff1493;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(0.8);
+            }
+            50% {
+                transform: translateY(-100px) scale(1);
+            }
+            100% {
+                transform: translateY(0) scale(0.8);
             }
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>MI AMOR, SE CUANTO TE GUSTAN ESTAS COSAS</h1>
-        <h2>Y AHORA QUIERO PREGUNTARTELO ENFRENTE DE TODOS</h2>
-        <button onclick="window.location.href='rosas.html'">QUIERES CASARTE CONMIGO💛</button>
+    <div class="content">
+        <div>
+            <h1>MI AMOR, SE CUANTO TE GUSTAN ESTAS COSAS</h1>
+            <h2>Y AHORA QUIERO PREGUNTARTELO ENFRENTE DE TODOS</h2>
+            <button onclick="window.location.href='rosas.html'" class="proposal-button">💛💍 ¿QUIERES CASARTE CONMIGO? 💍💛</button>
+
+            <!-- Corazones flotantes -->
+            <div class="heart" style="top: 25%; left: 2px;"></div>
+            <div class="heart" style="top: 50%; left: 2px;"></div>
+            <div class="heart" style="top: 75%; left: 2px;"></div>
+            <div class="heart" style="top: 100%; left: 2px;"></div>
+            <div class="heart" style="top: 25%; right: 2px;"></div>
+            <div class="heart" style="top: 50%; right: 2px;"></div>
+            <div class="heart" style="top: 75%; right: 2px;"></div>
+            <div class="heart" style="top: 100%; right: 2px;"></div>
+        </div>
+    </div>
+
+    <!-- Mensaje que se muestra en modo portrait -->
+    <div class="rotate-message">
+        <p>Por favor, gira tu dispositivo para continuar.</p>
     </div>
 </body>
 </html>
